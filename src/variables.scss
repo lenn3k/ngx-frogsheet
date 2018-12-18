@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+
+
+$primary-color-text:   #FFFFFF;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+
+$primary-palette: mat-palette($mat-teal);
+$accent-palette: mat-palette($mat-amber);
+$warn-palette: mat-palette($mat-red);
+
+$primary: mat-color($primary-palette);
+$primary-light: mat-color($primary-palette, lighter);
+$primary-dark: mat-color($primary-palette, darker);
+
+$accent: mat-color($accent-palette);
+$accent-light: mat-color($accent-palette, lighter);
+$accent-dark: mat-color($accent-palette, darker);
+
+$warn: mat-color($warn-palette);
+$warn-light: mat-color($warn-palette, lighter);
+$warn-dark: mat-color($warn-palette, darker);
