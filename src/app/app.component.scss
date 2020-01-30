@@ -1,79 +1,70 @@
-@import "../variables";
+@import '../variables';
 
 .app-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 
-    .app-navbar-header {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 8px 16px;
-        background: $primary-dark;
-        color: $primary-color-text;
+  .app-navbar-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 16px;
+    background: $primary-dark;
+    color: $primary-color-text;
 
-        > * {
-            line-height: 36px;
-        }
-
-        .app-logo {
-            height: 26px;
-            margin: 0 4px 3px 0;
-        }
-
-        button{
-            margin-right: 0.5rem;
-        }
-
+    .app-logo {
+      height: 26px;
+      margin: 0 4px 3px 0;
     }
+
+    button {
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .timesheet-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+
+  .timesheet-row {
     display: flex;
-    flex-direction: column;
-    overflow: scroll;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 
-    .timesheet-row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-left: auto;
-        margin-right: auto;
-
-        > * {
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-        }
-
-        &.weekend {
-            background-color: $primary-light;
-        }
-
-        .label {
-            font-weight: bold;
-            color: $primary-dark;
-            min-width: 50px;
-            line-height: 36px;
-            text-align: right;
-            padding-right: 1rem;
-            border-right: 1px solid $primary;
-
-        }
-
-        .mat-form-field {
-
-
-        }
-
-        .total {
-            font-weight: bold;
-            min-width: 50px;
-            line-height: 36px;
-            text-align: center;
-        }
+    > * {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
     }
-}
 
+    &.weekend {
+      background-color: $primary-light;
+    }
+
+    .label {
+      font-weight: bold;
+      color: $primary-dark;
+      min-width: 50px;
+      line-height: 36px;
+      text-align: right;
+      padding-right: 1rem;
+      border-right: 1px solid $primary;
+    }
+
+    .mat-form-field {
+    }
+
+    .total {
+      font-weight: bold;
+      min-width: 50px;
+      line-height: 36px;
+      text-align: center;
+    }
+  }
+}

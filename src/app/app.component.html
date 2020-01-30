@@ -1,51 +1,85 @@
 <div class="app-navbar mat-elevation-z6">
-    <div class="app-navbar-header">
-        <a class="mat-button">
-            <span class="mat-button-wrapper">
-                <img class="app-logo" alt="frogsheet" src="../assets/img/frog.svg">
-                <span>Frogsheet</span>
-            </span>
-        </a>
+  <div class="app-navbar-header">
+    <a class="mat-button">
+      <span class="mat-button-wrapper">
+        <img class="app-logo" alt="frogsheet" src="../assets/img/frog.svg" />
+        <span>Frogsheet</span>
+      </span>
+    </a>
 
-        <div class="flex-spacer"></div>
+    <div class="flex-spacer"></div>
+    <mat-form-field>
+      <mat-label>Month</mat-label>
+      <mat-select
+        placeholder="type"
+        [(ngModel)]="currentMonth"
+        (valueChange)="updateDays()"
+      >
+        <mat-option
+          *ngFor="let month of monthList; let index = index"
+          [value]="index"
+          >{{ month }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <div class="flex-spacer"></div>
 
-        <button mat-stroked-button><mat-icon>refresh</mat-icon>Refresh</button>
-        <button mat-stroked-button><mat-icon>save</mat-icon>Save</button>
-    </div>
+    <button mat-stroked-button><mat-icon>refresh</mat-icon>Refresh</button>
+    <button mat-stroked-button><mat-icon>save</mat-icon>Save</button>
+  </div>
 </div>
 
-
 <div class="timesheet-container">
-    <div class="timesheet-row  {{dayInput.weekday?'':'weekend'}}" *ngFor="let dayInput of dayInputs">
-        <div class="label">{{dayInput.day}}/{{dayInput.month+1}}</div>
-        <mat-form-field appearance="standard">
-            <mat-label>Start time</mat-label>
-            <input [disabled]="!dayInput.weekday" matInput [(ngModel)]="dayInput.startTime"
-                   (change)="calculateTotal(dayInput)" placeholder="start" type="time"/>
-            <mat-error>Something is wrong here</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-            <mat-label>End time</mat-label>
-            <input [disabled]="!dayInput.weekday" matInput [minTime]="dayInput.startTime" [(ngModel)]="dayInput.endTime"
-                   (change)="calculateTotal(dayInput)" placeholder="end" type="time"/>
-            <mat-error>Something is wrong here</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-            <mat-label>Break time</mat-label>
-            <input [disabled]="!dayInput.weekday" matInput [maxTime]="dayInput.total" [(ngModel)]="dayInput.breakTime"
-                   (change)="calculateTotal(dayInput)" placeholder="break" type="time"/>
-            <mat-error>Something is wrong here</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-            <mat-select [disabled]="!dayInput.weekday" [(ngModel)]="dayInput.type"
-                        (valueChange)="calculateTotal(dayInput)" placeholder="type">
-                <mat-option [value]="'work'">work</mat-option>
-                <mat-option [value]="'day off'">day off</mat-option>
-                <mat-option [value]="'half day'">half day</mat-option>
-                <mat-option [value]="'sick'">sick</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <div class="total">{{dayInput.total}}</div>
-    </div>
+  <div
+    class="timesheet-row  {{ dayInput.weekday ? '' : 'weekend' }}"
+    *ngFor="let dayInput of dayInputs"
+  >
+    <div class="label">{{ dayInput.day }}/{{ dayInput.month + 1 }}</div>
+    <mat-form-field appearance="standard">
+      <mat-label>Start time</mat-label>
+      <input
+        [disabled]="!dayInput.weekday"
+        matInput
+        [(ngModel)]="dayInput.startTime"
+        (change)="calculateTotal(dayInput)"
+        placeholder="start"
+        type="time"
+      />
+      <mat-error>Something is wrong here</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>End time</mat-label>
+      <input
+        [disabled]="!dayInput.weekday"
+        matInput
+        [minTime]="dayInput.startTime"
+        [(ngModel)]="dayInput.endTime"
+        (change)="calculateTotal(dayInput)"
+        placeholder="end"
+        type="time"
+      />
+      <mat-error>Something is wrong here</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Total</mat-label>
+      <input
+        [disabled]="true"
+        matInput
+        [(ngModel)]="dayInput.total"
+        type="text"
+      />
+      <mat-error>Something is wrong here</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Shift</mat-label>
+      <input
+        [disabled]="true"
+        matInput
+        [ngModel]="dayInput.shift"
+        type="text"
+      />
+      <mat-error>Something is wrong here</mat-error>
+    </mat-form-field>
+    <div class="total">{{ dayInput.overtime }}</div>
+  </div>
 </div>

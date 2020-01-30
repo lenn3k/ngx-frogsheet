@@ -5,35 +5,34 @@
 $app-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
 @include angular-material-theme($app-theme);
 
-html, body {
-    height: 100%;
-
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #eee;
-    color: $primary-text-color;
-    overflow: hidden;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #eee;
+  color: $primary-text-color;
+  overflow: hidden;
 }
 
-
-app-root{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 56px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+app-root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .mat-button .mat-button-wrapper > * {
-    vertical-align: middle;
-    line-height: 36px;
+  vertical-align: middle;
+  line-height: 36px;
 }
 
 .flex-spacer {
-    flex-grow: 1;
+  flex-grow: 1;
 }
